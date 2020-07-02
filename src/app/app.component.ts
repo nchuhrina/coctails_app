@@ -7,10 +7,10 @@ import {subscribeTo} from 'rxjs/internal-compatibility';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', '../../node_modules/bootstrap/dist/css/bootstrap.css']
 })
 export class AppComponent {
- coctailsType = '';
+  coctailsType = this.searchCoctailType();
  response: any;
  constructor(private  http: HttpClient) {
 
@@ -20,16 +20,18 @@ export class AppComponent {
    this.http.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
      .subscribe((response) => {
        this.response = response;
-       console.log(this.response);
+
      });
 
  }
-  loadingCoctails(coctailsType){
-    // tslint:disable-next-line:no-unused-expression
-    this.http.get('https://www.thecocktaildb.com/api/json/v1/1/list.php' + coctailsType)
+
+  loadingCoctails(){
+   console.log(this.coctailsType);
+
+   this.http.get('https://www.thecocktaildb.com/api/json/v1/1/list.php')
       .subscribe((resp) => {
         this.response = resp;
-        console.log(this.response);
+
       });
  }
 }

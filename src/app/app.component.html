@@ -1,14 +1,12 @@
 
-<app-drinks></app-drinks>
-<button (click)="searchCoctailType()">filter</button>
+<app-drinks (load)="loadingCoctails()"></app-drinks>
 
-
-<div (load)="searchCoctailType()">
+<div>
   <ul>
     <div *ngIf="response">
       <div *ngFor="let c of response.drinks">
         {{c.strCategory}}
-        <div (loadstart)="loadingCoctails(c.strCategory)">
+        <div >
           <div *ngIf="response">
             <div *ngFor="let d of response.drinks">
               {{d.strDrink}}
@@ -20,16 +18,5 @@
   </ul>
 </div>
 
-<div >
-  <ul>
-    <li *ngIf="response">
-      <label *ngFor="let c of response.drinks">
-        {{c.strCategory}}
-        <input type="checkbox"
-               value={{c.strCategory}}>
-      </label>
-    </li>
-  </ul>
-</div>
 
 

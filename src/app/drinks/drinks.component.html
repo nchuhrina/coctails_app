@@ -1,1 +1,22 @@
-<p>drinks works!</p>
+<nav class="navbar navbar-expand-md bg-light navbar-dark">
+
+  <a class="navbar-brand" href="#" style="color: black">Drinks</a>
+
+  <button (click)="searchCoctailType()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav" *ngIf="response">
+      <li class="nav-item" *ngFor="let c of response.drinks" >
+        <label >
+          {{c.strCategory}}
+          <input type="checkbox"
+                 checked='checked'
+                 >
+        </label>
+      </li>
+
+    </ul>
+  </div>
+</nav>
